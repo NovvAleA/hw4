@@ -125,7 +125,7 @@ def test_1():
         print("oops_1")
         print(R0,G0,B0)
         
- def test_2():
+def test_2():
 
     try:
         image = Image.open('rez_2.jpeg')
