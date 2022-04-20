@@ -99,10 +99,10 @@ def lighting_2(finp):
     pil_image = Image.fromarray(arr)
     pil_image.save('rez_2.jpeg')
     
-def test():
+def test_1():
 
     try:
-        image = Image.open('rez.jpeg')
+        image = Image.open('rez_1.jpeg')
     except OSError:
         print("Error test! Failed to open file\n")
         return 1
@@ -122,7 +122,33 @@ def test():
                 B0 = int(arr[i][j][2])
                 
     if (R0,G0,B0) != (255,255,255):
-        print("oops")
+        print("oops_1")
+        print(R0,G0,B0)
+        
+ def test_2():
+
+    try:
+        image = Image.open('rez_2.jpeg')
+    except OSError:
+        print("Error test! Failed to open file\n")
+        return 1
+    
+    arr = np.asarray(image)
+
+    shape = arr.shape
+    
+    bright = 0
+    
+    for i in range(shape[0]):
+        for j in range(shape[1]):
+             if  bright < int(arr[i][j][0]) + int(arr[i][j][1]) + int(arr[i][j][2]) :
+                bright = int(arr[i][j][0]) + int(arr[i][j][1]) + int(arr[i][j][2])
+                R0 = int(arr[i][j][0])
+                G0 = int(arr[i][j][1])
+                B0 = int(arr[i][j][2])
+                
+    if (R0,G0,B0) != (255,255,255):
+        print("oops_2")
         print(R0,G0,B0)
     
     
@@ -132,6 +158,7 @@ file = input("Enter name of file with pic\n")
 
 lighting_1(file)
 lighting_2(file)
-test()
+test_1()
+test_2()
 print("open rez_1.jpeg and rez_2.jpeg \n")
 
